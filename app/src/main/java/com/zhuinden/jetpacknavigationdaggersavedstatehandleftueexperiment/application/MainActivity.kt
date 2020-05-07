@@ -18,7 +18,7 @@ package com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.appli
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.R
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.Injector
+import toothpick.Toothpick
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +29,10 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
 
-        if (isFinishing) { // for sample's sake
-            Injector.get().authenticationManager().clearRegistration()
+        if (isFinishing) {
+            Toothpick.openRootScope()
+                .getInstance(AuthenticationManager::class.java)
+                .clearRegistration()
         }
     }
 }

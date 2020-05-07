@@ -22,9 +22,11 @@ import com.zhuinden.eventemitter.EventSource
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.R
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.AuthenticationManager
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.core.navigation.NavigationCommand
+import toothpick.InjectConstructor
 import javax.inject.Inject
 
-class ProfileViewModel @Inject constructor(
+@InjectConstructor
+class ProfileViewModel(
     private val authenticationManager: AuthenticationManager
 ): ViewModel() {
     private val navigationEmitter: EventEmitter<NavigationCommand> = EventEmitter()

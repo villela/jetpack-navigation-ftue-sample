@@ -16,12 +16,13 @@
 package com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application
 
 import android.app.Application
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.DaggerSingletonComponent
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.Injector
+import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.AppModule
+import toothpick.ktp.KTP
 
 class CustomApplication: Application() {
     override fun onCreate() {
         super.onCreate()
-        Injector.initialize(DaggerSingletonComponent.factory().create(this))
+        KTP.openRootScope()
+            .installModules(AppModule(this))
     }
 }

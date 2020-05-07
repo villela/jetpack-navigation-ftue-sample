@@ -21,18 +21,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.R
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.Injector
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.core.events.observe
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.databinding.LoginFragmentBinding
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.utils.fragmentSavedStateViewModels
+import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.utils.fragmentViewModels
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.utils.onClick
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.utils.onTextChanged
 
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
-    private val viewModel by fragmentSavedStateViewModels { handle ->
-        Injector.get().loginViewModelFactory().create(handle)
-    }
+    private val viewModel by fragmentViewModels<LoginViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -21,13 +21,15 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.R
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.Injector
+import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.AuthenticationManager
+import toothpick.Toothpick
 
 class SplashFragment : Fragment(R.layout.splash_fragment) {
     private val handler = Handler()
 
     private val finishSplash: Runnable = Runnable {
-        val authenticationManager = Injector.get().authenticationManager()
+        val authenticationManager =
+            Toothpick.openRootScope().getInstance(AuthenticationManager::class.java)
 
         if (authenticationManager.isAuthenticated()) {
             Navigation.findNavController(requireView()).navigate(R.id.splash_to_logged_in)

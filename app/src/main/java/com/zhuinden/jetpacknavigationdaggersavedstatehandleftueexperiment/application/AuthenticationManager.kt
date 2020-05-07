@@ -16,11 +16,12 @@
 package com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application
 
 import android.content.SharedPreferences
+import toothpick.InjectConstructor
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class AuthenticationManager @Inject constructor(val sharedPref: SharedPreferences) {
+@InjectConstructor
+class AuthenticationManager(private val sharedPref: SharedPreferences) {
     fun isAuthenticated(): Boolean =
         sharedPref.getBoolean("isRegistered", false)
 

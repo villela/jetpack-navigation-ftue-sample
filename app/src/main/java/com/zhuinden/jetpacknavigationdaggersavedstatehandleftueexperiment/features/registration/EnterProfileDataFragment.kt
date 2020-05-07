@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.Navigation
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.R
-import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection.Injector
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.core.events.observe
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.databinding.EnterProfileDataFragmentBinding
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.utils.navGraphSavedStateViewModels
@@ -30,9 +29,7 @@ import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.utils.
 
 
 class EnterProfileDataFragment : Fragment(R.layout.enter_profile_data_fragment) {
-    private val viewModel by navGraphSavedStateViewModels(R.id.registration_graph) { handle ->
-        Injector.get().registrationViewModelFactory().create(handle)
-    }
+    private val viewModel by navGraphSavedStateViewModels<RegistrationViewModel>(R.id.registration_graph)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

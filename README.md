@@ -1,3 +1,7 @@
+# About the Fork
+
+This fork swaps Dagger for Toothpick, a scoped based DI library, for the sake of sanity. 
+
 # Jetpack Navigation + Fragments + NavGraphs + SavedStateHandle + Dagger + AssistedInject + EventEmitter (toasts / navigation commands)
 
 This is a sample repository for the aforementioned tools (primarily Jetpack Navigation + NavGraph-scoped ViewModel + SavedStateHandle + Dagger + AssistedInject).

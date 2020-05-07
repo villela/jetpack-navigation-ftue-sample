@@ -18,22 +18,18 @@ package com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.featu
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.squareup.inject.assisted.Assisted
-import com.squareup.inject.assisted.AssistedInject
 import com.zhuinden.eventemitter.EventEmitter
 import com.zhuinden.eventemitter.EventSource
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.R
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.AuthenticationManager
 import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.core.navigation.NavigationCommand
+import toothpick.InjectConstructor
 
-class LoginViewModel @AssistedInject constructor(
+@InjectConstructor
+class LoginViewModel(
     private val authenticationManager: AuthenticationManager,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    @AssistedInject.Factory
-    interface Factory {
-        fun create(savedStateHandle: SavedStateHandle): LoginViewModel
-    }
 
     private val errorEmitter: EventEmitter<String> = EventEmitter()
     val errorEvents: EventSource<String> get() = errorEmitter

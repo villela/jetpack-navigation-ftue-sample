@@ -17,21 +17,16 @@
 package com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.injection
 
 import android.app.Application
-import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import dagger.Module
-import dagger.Provides
+import com.zhuinden.jetpacknavigationdaggersavedstatehandleftueexperiment.application.AuthenticationManager
+import toothpick.config.Module
 
+class AppModule(application: Application) : Module() {
 
-@Module
-object AppModule {
-    @JvmStatic
-    @Provides
-    @Suppress("DEPRECATION") // w/e
-    fun sharedPref(app: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(app)
-
-    @JvmStatic
-    @Provides
-    fun appContext(app: Application): Context = app
+    init {
+        bind(Application::class.java).toInstance(application)
+        bind(SharedPreferences::class.java).toInstance(PreferenceManager.getDefaultSharedPreferences(application))
+        bind(AuthenticationManager::class.java).singleton()
+    }
 }
